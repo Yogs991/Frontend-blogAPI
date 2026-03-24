@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router";
-import HomePage from "../pages/HomePage";
+import HomePage from "../pages/HomePage/HomePage";
 import Login from "../pages/User/Login";
 import Register from "../pages/User/Register";
 import Posts from "../pages/Posts/Posts";
