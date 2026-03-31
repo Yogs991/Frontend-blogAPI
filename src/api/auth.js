@@ -1,7 +1,7 @@
 import { api } from "./client";
 
 const register = async(data)=>{
-    const res = await api("/register",{
+    const res = await api("/user/register",{
         method: "POST",
         body: JSON.stringify(data),
     });
@@ -14,7 +14,7 @@ const register = async(data)=>{
 }
 
 const login = async(data)=>{
-    const res = await api("/login",{
+    const res = await api("/user/login",{
         method: "POST",
         body: JSON.stringify(data),
     });
