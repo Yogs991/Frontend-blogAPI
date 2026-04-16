@@ -17,18 +17,28 @@ const updatePost = (postId, data)=>{
     api(`/post/${postId}`,{
         method: "PATCH",
         body: JSON.stringify(data)
-    })
+    });
 }
 
 const deletePost = (postId)=>{
     api(`/post/${postId}`,{
         method: "DELETE"
-    })
+    });
+}
+
+const getCommentsForPost = (postId)=>{
+    return api(`/post/${postId}/comments`);
+}
+
+const getCommentById = (postId, commentId)=>{
+    return api(`post/${postId}/comments/${commentId}`);
 }
 
 export default {
     getPost,
     createPost,
     updatePost,
-    deletePost
+    deletePost,
+    getCommentsForPost,
+    getCommentById
 };

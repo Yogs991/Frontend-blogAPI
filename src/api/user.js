@@ -1,6 +1,8 @@
 import {api} from './client';
 
-const getCurrentUser = ()=>{"/users/me"}
+const getCurrentUser = ()=>{
+    return api("/user/me");
+}
 
 const getSinglePostByUser = (userId, postId)=>{
     return api(`/user/${userId}/posts/${postId}`);

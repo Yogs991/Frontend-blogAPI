@@ -1,7 +1,10 @@
 import { api } from "./client";
 
-const getCommentsByPost = (postId)=>{
-    return api(`/comments/${postId}`);
+const createComment = (postId, data)=>{
+    api(`/comments/${postId}`,{
+        method: "POST",
+        body: JSON.stringify(data)
+    });
 }
 
 const updateComment = (postId, commentId, data)=>{
@@ -17,4 +20,8 @@ const deleteComment = (postId, commentId)=>{
     });
 }
 
-export default {getCommentsByPost, updateComment, deleteComment};
+export default {
+    createComment,
+    updateComment,
+    deleteComment
+};
