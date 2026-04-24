@@ -6,7 +6,7 @@ import { AuthContext } from "./authContext";
 export function AuthProvider({children}){
     const [token, setToken] = useState(()=>localStorage.getItem("token"));
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const logout = ()=>{
         api.logout();
@@ -39,7 +39,8 @@ export function AuthProvider({children}){
                 token,
                 user,
                 loading,
-                isAdmin: false,
+                isAuthenticated: user,
+                isAdmin: user?.isAdmin === true,
                 login: async (data)=>{
                     const res = await api.login(data);
                     if(res?.token) setToken(res.token);
@@ -47,7 +48,7 @@ export function AuthProvider({children}){
                 },
                 register: async(data)=>{
                     const res = await api.register(data);
-                    if(res?.token) setToken(res.setToken);
+                    if(res?.token) setToken(res.token);
                     return res;
                 },
                 logout,

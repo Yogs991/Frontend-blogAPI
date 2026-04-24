@@ -17,7 +17,7 @@ const getAllUsers = ()=>{
 }
 
 const deleteUser = (userId)=>{
-    api(`/user/${userId}`,{
+    return api(`/user/${userId}`,{
         method: "DELETE",
     })
 }

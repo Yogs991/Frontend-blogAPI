@@ -7,21 +7,21 @@ const getPost = (params={})=>{
 }
 
 const createPost = (data)=>{
-    api("/post",{
+    return api("/post",{
         method: "POST",
         body: JSON.stringify(data),
     })
 };
 
 const updatePost = (postId, data)=>{
-    api(`/post/${postId}`,{
-        method: "PATCH",
+    return api(`/post/${postId}`,{
+        method: "PUT",
         body: JSON.stringify(data)
     });
 }
 
 const deletePost = (postId)=>{
-    api(`/post/${postId}`,{
+    return api(`/post/${postId}`,{
         method: "DELETE"
     });
 }
@@ -31,7 +31,7 @@ const getCommentsForPost = (postId)=>{
 }
 
 const getCommentById = (postId, commentId)=>{
-    return api(`post/${postId}/comments/${commentId}`);
+    return api(`/post/${postId}/comments/${commentId}`);
 }
 
 export default {

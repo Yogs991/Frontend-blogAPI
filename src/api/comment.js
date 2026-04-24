@@ -1,21 +1,21 @@
 import { api } from "./client";
 
 const createComment = (postId, data)=>{
-    api(`/comments/${postId}`,{
+    return api(`/comments/${postId}`,{
         method: "POST",
         body: JSON.stringify(data)
     });
 }
 
 const updateComment = (postId, commentId, data)=>{
-    api(`/comments/${postId}/comments/${commentId}`,{
-        method: "PATCH",
+    return api(`/comments/${postId}/comment/${commentId}`,{
+        method: "PUT",
         body: JSON.stringify(data)
     });
 };
 
 const deleteComment = (postId, commentId)=>{
-    api(`/comments/${postId}/${commentId}`,{
+    return api(`/comments/${postId}/comment/${commentId}`,{
         method: "DELETE"
     });
 }
