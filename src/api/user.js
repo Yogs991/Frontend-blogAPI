@@ -1,25 +1,23 @@
 import {api} from './client';
 
-const getCurrentUser = ()=>{
+export const getCurrentUser = ()=>{
     return api("/user/me");
 }
 
-const getSinglePostByUser = (userId, postId)=>{
+export const getSinglePostByUser = (userId, postId)=>{
     return api(`/user/${userId}/posts/${postId}`);
 }
 
-const getPostsByUser = (userId)=>{
+export const getPostsByUser = (userId)=>{
     return api(`/user/${userId}/posts`);
 }
 
-const getAllUsers = ()=>{
+export const getAllUsers = ()=>{
     return api('/user');
 }
 
-const deleteUser = (userId)=>{
+export const deleteUser = (userId)=>{
     return api(`/user/${userId}`,{
         method: "DELETE",
     })
 }
-
-export default {getCurrentUser, getSinglePostByUser, getPostsByUser, getAllUsers, deleteUser}

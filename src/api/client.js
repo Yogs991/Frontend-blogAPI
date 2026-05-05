@@ -1,6 +1,6 @@
 const API_BASE_URL = 'http://localhost:3000/api';
 
-const api  = async (endpoint, options = {})=>{
+export const api  = async (endpoint, options = {})=>{
     const token =  localStorage.getItem("token");
     const res = await fetch(`${API_BASE_URL}${endpoint}`,{
         headers:{
@@ -21,5 +21,3 @@ const api  = async (endpoint, options = {})=>{
     
     return res.json();
 }
-
-export default {api};

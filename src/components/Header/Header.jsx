@@ -1,5 +1,6 @@
 import {useAuth} from "../../context/useAuth";
 import { useNavigate, Link, NavLink } from "react-router";
+import styles from './Header.module.css';
 
 export default function Header(){
     const {isAuthenticated, logout} = useAuth();
@@ -12,36 +13,38 @@ export default function Header(){
     }
 
     return(
-        <header className="header">
-            <div className="header-container">
-                <div className="headerLogo">
-                    <h3>TOP</h3>
+        <header className={styles.header}>
+            <div className={styles.headerContainer}>
+                <div className={styles.headerLogo}>
+                    <h3>The Odin Project</h3>
                 </div>
-                <div className="auth-container">
-                    { isAuthenticated ? (
-                        <button onClick={handleLogout} className="btn-logout">
-                            Logout
-                        </button>
-                    ):(
-                        <>
-                            <NavLink to="/login" className = "btn-login">
-                                Login
+                <div className={styles.buttons}>
+                    <div className={styles.navContainer}>
+                        <nav className={styles.nav}>
+                            <NavLink to="/" className={({isActive})=> isActive ? styles.active : undefined}>
+                                Home
                             </NavLink>
-                            <NavLink to="/register" className = "btn-register">
-                                Register
+                            <NavLink to="/post" className={({isActive})=> isActive ? styles.active : undefined}>
+                                Posts
                             </NavLink>
-                        </>
-                    )}
-                </div>
-                <div className="nav-container">
-                    <nav className="nav">
-                        <NavLink to="/">
-                            Home
-                        </NavLink>
-                        <NavLink to="/post">
-                            Posts
-                        </NavLink>
-                    </nav>
+                        </nav>
+                    </div>
+                    <div className={styles.authContainer}>
+                        { isAuthenticated ? (
+                            <button onClick={handleLogout} className={styles.logoutBtn}>
+                                Logout
+                            </button>
+                        ):(
+                            <>
+                                <NavLink to="/login" className={({isActive})=> isActive ? styles.active : undefined}>
+                                    Login
+                                </NavLink>
+                                <NavLink to="/register" className={({isActive})=> isActive ? styles.active : undefined}>
+                                    Register
+                                </NavLink>
+                            </>
+                        )}
+                    </div>
                 </div>
             </div>
         </header>

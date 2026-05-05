@@ -1,6 +1,6 @@
 import { api } from "./client";
 
-const register = async(data)=>{
+export const register = async(data)=>{
     const res = await api("/user/register",{
         method: "POST",
         body: JSON.stringify(data),
@@ -13,7 +13,7 @@ const register = async(data)=>{
     return res;
 }
 
-const login = async(data)=>{
+export const login = async(data)=>{
     const res = await api("/user/login",{
         method: "POST",
         body: JSON.stringify(data),
@@ -26,8 +26,6 @@ const login = async(data)=>{
     return res;
 }
 
-const logout = ()=>{
+export const logout = ()=>{
     localStorage.removeItem("token");
 }
-
-export default {register, login, logout}

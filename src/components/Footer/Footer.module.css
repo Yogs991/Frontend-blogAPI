@@ -1,0 +1,19 @@
+.footer{
+    padding-top: 20px;
+}
+
+.footerContainer{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.githubContainer img{
+    width: 30px;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    background-color: whitesmoke;
+}
