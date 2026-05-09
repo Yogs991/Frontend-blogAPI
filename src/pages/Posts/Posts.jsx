@@ -41,7 +41,7 @@ export default function Posts(){
 
     const handleSubmitComment = async (postId)=>{
         try{
-            await createComment({content: commentText[postId]});
+            await createComment(postId, {content: commentText[postId]});
 
             setCommentText((prev)=>({
                 ...prev,
@@ -102,7 +102,7 @@ export default function Posts(){
                         <div className="comments-container">
                             <h4 className="comments-header">Comments</h4>
                         
-                            {posts.comments.length === 0 && (
+                            {post.comments.length === 0 && (
                                 <p className="no-comments">
                                     This post does not have any comments yet.
                                 </p>

@@ -18,7 +18,7 @@ const router = createBrowserRouter([
             {path: "login", element: <Login />},
             {path: "register", element: <Register />},
             {path: "post", element: <Posts/>},
-            // {path: "post/:id", element: },
+            {path: "post/:id", element: <Posts/> },
             {path: "create-post", element:(
                 <ProtectedRoute>
 <                   PostDetails/>

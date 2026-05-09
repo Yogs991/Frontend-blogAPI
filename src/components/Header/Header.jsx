@@ -27,6 +27,11 @@ export default function Header(){
                             <NavLink to="/post" className={({isActive})=> isActive ? styles.active : undefined}>
                                 Posts
                             </NavLink>
+                            {isAuthenticated &&(
+                                <NavLink to="/create-post" className={({isActive})=> isActive ? styles.active : undefined}>
+                                    Create Post
+                                </NavLink>
+                            )}
                         </nav>
                     </div>
                     <div className={styles.authContainer}>

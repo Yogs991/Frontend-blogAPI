@@ -24,7 +24,7 @@ export default function PostDetails(){
         try{
             setPostLoading(true);
             const data = await getPost({page, limit: 5});
-            setPosts(data.posts);
+            setPosts(Array.isArray(data.data) ? data.data : []);
             setTotalPages(data.totalPages);
             setCurrentPage(data.currentPage);
         }catch(err){
@@ -64,10 +64,10 @@ export default function PostDetails(){
         fetchPosts();
     };
 
-    const handleTogglePublish = async (postId, published) => {
+    const handleTogglePublish = async (postId, isPublished) => {
         try {
         await updatePost(postId, {
-            published: !published,
+            isPublished: !isPublished,
         });
 
         fetchPosts();
@@ -99,18 +99,18 @@ export default function PostDetails(){
                             </h3>
                         )}
                         {posts.map((post)=>{
-                            const createdDate = new Date().toLocaleString("en-GB");
+                            const createdDate = new Date(post.createdAt).toLocaleString("en-GB");
                             return(
                                 <div key={post.id} className={styles.postContainer}>
                                     <h2 className={styles.postTitle}>{post.title}</h2>
                                     <div className={styles.postContentContainer}>
                                         <p className={styles.postContent}>{post.content}</p>
                                         <p className={styles.postPublished}>
-                                            {`Published: ${post.published ? "Yes" : "No"}`}
+                                            {`Published: ${post.isPublished ? "Yes" : "No"}`}
                                         </p>
-                                        <p className={styles.commentCount}>
-                                            {`Comments: ${post.comments.count}`}
-                                        </p>
+                                        {/* <p className={styles.commentCount}>
+                                            {`Comments: ${post.comments.length}`}
+                                        </p> */}
                                         <p className={styles.postCreated}>{createdDate}</p>
                                     </div>
                                     <div className={styles.postControls}>
@@ -148,7 +148,7 @@ export default function PostDetails(){
                 )}
 
                 <ConfirmModal
-                    isOpen={!showConfirm}
+                    isOpen={!!showConfirm}
                     message="Are you sure you want to delete this post?"
                     confirmText="Delete"
                     onConfirm={confirmDelete}
