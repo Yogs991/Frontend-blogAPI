@@ -3,7 +3,7 @@ import {Link, useSearchParams} from "react-router";
 import {useAuth} from "../../context/useAuth.js";
 import {getPost} from "../../api/posts.js";
 import {createComment} from "../../api/comment.js";
-import truncateContent from "../../../functions/truncate.js";
+import truncateContent from "../../functions/truncate.js";
 
 export default function Posts(){
     const [posts, setPosts] = useState([]);

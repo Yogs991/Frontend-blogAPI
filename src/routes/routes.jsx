@@ -5,6 +5,7 @@ import Register from "../pages/User/Register";
 import Posts from "../pages/Posts/Posts";
 import PostDetails from "../pages/Posts/PostDetails";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import App from "../App";
 
 const router = createBrowserRouter([
@@ -17,7 +18,12 @@ const router = createBrowserRouter([
             {path: "login", element: <Login />},
             {path: "register", element: <Register />},
             {path: "post", element: <Posts/>},
-            {path: "post/:id", element: <PostDetails/>}
+            // {path: "post/:id", element: },
+            {path: "create-post", element:(
+                <ProtectedRoute>
+<                   PostDetails/>
+                </ProtectedRoute>
+            )}
         ]
     }
 ]);
