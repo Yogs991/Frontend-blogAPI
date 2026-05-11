@@ -1,0 +1,267 @@
+.postSection {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #1a1a1a;
+}
+
+.pageNumHeader {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.postContainer {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid #e8e4df;
+    position: relative;
+}
+
+.postContainer:first-child {
+    border-top: 2px solid #1a1a1a;
+}
+
+.postTitle {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #1a1a1a;
+    margin: 0 0 1rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.postTitle a,
+a .postTitle {
+    color: inherit;
+    text-decoration: none;
+}
+
+.postTitle:hover,
+a:hover .postTitle {
+    color: #c0392b;
+}
+
+.postContentContainer {
+    margin-bottom: 1.25rem;
+}
+
+.postContent {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: whitesmoke;
+    margin: 0 0 0.6rem;
+    font-weight: 300;
+}
+
+.postDate {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #aaa;
+}
+
+.truncatedPostLink {
+    text-decoration: none;
+}
+
+.truncatedPostLink button,
+button.truncated-post-btn {
+    background: none;
+    border: 1px solid #1a1a1a;
+    color: whitesmoke;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.45rem 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    margin-bottom: 1.75rem;
+}
+
+.truncatedPostLink button:hover,
+button.truncated-post-btn:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.commentsContainer {
+    background: #faf9f7;
+    border-left: 3px solid #e0d9d0;
+    padding: 1.5rem 1.5rem 1.25rem;
+    margin-top: 1.25rem;
+}
+
+.commentsHeader {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: #555;
+    margin: 0 0 1rem;
+}
+
+.noComments {
+    font-size: 0.9rem;
+    color: #aaa;
+    font-style: italic;
+    margin: 0 0 1rem;
+}
+
+.commentContainer {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed #e0d9d0;
+}
+
+.commentContainer:last-of-type {
+    border-bottom: none;
+}
+
+.commentContainer h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 0.3rem;
+    text-decoration: none;
+}
+
+.commentContainer h4 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.commentContainer h4 a:hover {
+    color: #c0392b;
+}
+
+.commentContainer p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #444;
+    margin: 0 0 0.3rem;
+}
+
+.dateCreated {
+    font-size: 0.74rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #bbb !important;
+}
+
+.submitCommentContainer {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #e8e4df;
+}
+
+.submitCommentHeader {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    font-style: italic;
+    color: #777;
+    margin: 0 0 0.75rem;
+}
+
+.commentTextarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #d5cec6;
+    background: #fff;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #1a1a1a;
+    padding: 0.75rem 1rem;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.commentTextarea:focus {
+    border-color: #1a1a1a;
+}
+
+.submitCommentBtn {
+    margin-top: 0.65rem;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.4rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.submitCommentBtn:hover {
+    background: #c0392b;
+}
+
+.pageContainer {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.pageContainer p {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #999;
+    margin: 0;
+}
+
+.previousBtn,
+.nextBtn {
+    background: none;
+    border: 1px solid #ccc;
+    color: #555;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.45rem 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.previousBtn:hover,
+.nextBtn:hover {
+    border-color: #1a1a1a;
+    color: #1a1a1a;
+}
+
+.viewCommentsLink {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1px;
+    margin-bottom: 1rem;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.viewCommentsLink:hover {
+    color: #c0392b;
+    border-color: #c0392b;
+}

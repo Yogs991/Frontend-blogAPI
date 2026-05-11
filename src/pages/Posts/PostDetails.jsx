@@ -108,9 +108,9 @@ export default function PostDetails(){
                                         <p className={styles.postPublished}>
                                             {`Published: ${post.isPublished ? "Yes" : "No"}`}
                                         </p>
-                                        {/* <p className={styles.commentCount}>
+                                        <p className={styles.commentCount}>
                                             {`Comments: ${post.comments.length}`}
-                                        </p> */}
+                                        </p>
                                         <p className={styles.postCreated}>{createdDate}</p>
                                     </div>
                                     <div className={styles.postControls}>
