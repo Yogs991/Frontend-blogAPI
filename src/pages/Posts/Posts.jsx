@@ -4,6 +4,7 @@ import {useAuth} from "../../context/useAuth.js";
 import {getPost} from "../../api/posts.js";
 import {createComment} from "../../api/comment.js";
 import truncateContent from "../../functions/truncate.js";
+import styles from './Posts.module.css';
 
 export default function Posts(){
     const [posts, setPosts] = useState([]);
@@ -24,9 +25,9 @@ export default function Posts(){
         const fetchPosts = async ()=>{
             try {
                 setLoading(true);
-
                 const data = await getPost({page, limit: 5});
-                setPosts(data.posts);
+                // console.log(data);
+                setPosts(Array.isArray(data.data) ? data.data : []);
                 setTotalPages(data.totalPages);
                 setCurrentPage(data.currentPage);
             } catch (error) {
@@ -49,7 +50,7 @@ export default function Posts(){
             }));
 
             const data = await getPost({page, limit: 5});
-            setPosts(data.posts);
+            setPosts(Array.isArray(data.data) ? data.data : []);
             setTotalPages(data.totalPages);
             setCurrentPage(data.currentPage);
         }catch(err){
@@ -67,50 +68,51 @@ export default function Posts(){
     const hasNext = currentPage < totalPages;
     const maxPost = 100;
     const maxComment = 100;
+
     return(
-        <section className="posts-section">
+        <section className={styles.postSection}>
             {currentPage > 1 && (
-                <h3 className="page-num-header">
+                <h3 className={styles.pageNumHeader}>
                     Page {currentPage} of {totalPages}
                 </h3>
             )}
 
             {posts.map((post)=>{
-                const createdDate = new Date().toLocaleString("en-GB");
+                const createdDate = new Date(post.createdAt).toLocaleString("en-GB");
                 const postIsTruncated = post.content.length > maxPost;
 
                 return(
-                    <div key={post.id} className="post-container">
+                    <div key={post.id} className={styles.postContainer}>
                         <Link to={`/posts/${post.id}`}>
-                            <h2 className="post-title">{post.title}</h2>
+                            <h2 className={styles.postTitle}>{post.title}</h2>
                         </Link>
 
-                        <div className="post-content-container">
-                            <p className="post-content">
+                        <div className={styles.postContentContainer}>
+                            <p className={styles.postContent}>
                                 { postIsTruncated ? truncateContent(post.content, maxPost): post.content }
                             </p>
-                            <p className="post-date">
+                            <p className={styles.postDate}>
                                 {createdDate}
                             </p>
                         </div>
 
-                        <Link to={`/post/${post.id}`} className="truncated-post-link">
+                        <Link to={`/post/${post.id}`} className={styles.truncatedPostLink}>
                             <button className="truncated-post-btn">Show more</button>
                         </Link>
 
                         {/* comment section below */}
-                        <div className="comments-container">
-                            <h4 className="comments-header">Comments</h4>
+                        <div className={styles.commentsContainer}>
+                            <h4 className={styles.commentsHeader}>Comments</h4>
                         
                             {post.comments.length === 0 && (
-                                <p className="no-comments">
+                                <p className={styles.noComments}>
                                     This post does not have any comments yet.
                                 </p>
                             )}
 
                             {isAuthenticated && (
-                                <div className="submit-comment-container">
-                                    <h4 className="submit-comment-header">
+                                <div className={styles.submitCommentContainer}>
+                                    <h4 className={styles.submitCommentHeader}>
                                         Submit comment
                                     </h4>
 
@@ -124,10 +126,10 @@ export default function Posts(){
                                         }
                                         placeholder="Write your comment..."
                                         rows={4}
-                                        className="comment-textarea"
+                                        className={styles.commentTextarea}
                                     />
 
-                                    <button onClick={()=>handleSubmitComment(post.id)} className="submit-comment-btn">
+                                    <button onClick={()=>handleSubmitComment(post.id)} className={styles.submitCommentBtn}>
                                         Submit
                                     </button>
                                     
@@ -141,14 +143,14 @@ export default function Posts(){
                                 const commentIsTruncated = comment.content.length > maxComment;
                                 
                                 return (
-                                    <div key={comment.id} className="comment-container">
+                                    <div key={comment.id} className={styles.commentContainer}>
                                         <Link to={`/comments/${post.id}/${comment.id}`}>
                                             <h4>{username}</h4>
                                         </Link>
                                         <p>
                                             {commentIsTruncated ? truncateContent(comment.content, maxComment): comment.content}
                                         </p>
-                                        <p className="date-created">
+                                        <p className={styles.dateCreated}>
                                             {createdDate}
                                         </p>
                                     </div>
@@ -156,17 +158,17 @@ export default function Posts(){
                             })}
                         </div>
 
-                        <Link to={`/posts/${post.id}`} className= "post-detail-link">
+                        {/* <Link to={`/posts/${post.id}`} className= {styles.postDetailsLink}>
                             <button className="post-details-btn">Show more</button>
-                        </Link>
+                        </Link> */}
                     </div>
                 );
             })}
 
-            <div className="page-container">
+            <div className={styles.pageContainer}>
                 { hasPrevious && (
                     <Link to={`/posts?page=${currentPage - 1}`}>
-                        <button className="previous-btn">Previous</button>
+                        <button className={styles.previousBtn}>Previous</button>
                     </Link>
                 )}
                 <p>
@@ -174,7 +176,7 @@ export default function Posts(){
                 </p>
                 { hasNext && (
                     <Link to={`/posts?page=${currentPage + 1}`}>
-                        <button className="next-btn">Next</button>
+                        <button className={styles.nextBtn}>Next</button>
                     </Link>
                 )}
             </div>
